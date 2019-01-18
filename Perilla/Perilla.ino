@@ -7,7 +7,7 @@ IPAddress ip(192,168,9,150); //IP del Arduino
 EthernetServer server(80); //Crea un servidor Web con el puerto 80 que es el puerto HTTP por defecto
 String funcionalidad="";
 #define AUTO 9
-#define MANUAL 6
+#define MANUAL 7
 
 
 void setup() 
@@ -35,7 +35,7 @@ void loop()
   {
     funcionalidad="MANUAL";
   }
-  
+  a:;
     EthernetClient client = server.available(); 
   //Crear un cliente Web
   //Verifica si se detecte un cliente a través de una petición HTTP
