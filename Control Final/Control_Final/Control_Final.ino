@@ -57,7 +57,7 @@ void loop()
 {
   digitalWrite(contactor1,LOW);
   lcd.setCursor(0,0);
-  if(digitalRead(AUTO)==0)
+  if(digitalRead(AUTO)==HIGH)
   {
     funcionalidad="AUTOMATICO";
     for(int x=0;x<1;x++)
@@ -74,19 +74,37 @@ void loop()
     Serial.println(funcionalidad);
     if(value<=11.7)
     {
-
       ciclo();
     }
   }
-  if(digitalRead(MANUAL)==0)
+ else if(digitalRead(MANUAL)==HIGH)
   {
     lcd.clear();
     lcd.setCursor(0,0);
     funcionalidad="MANUAL";
     Serial.println(funcionalidad);
     lcd.println(funcionalidad);
+    if(digitalRead(9)==HIGH)
+    {
+      digitalWrite(6,HIGH);
+      delay(10000);
+      digitalWrite(7,LOW);
+    
+    }
+  if(digitalRead(9)==HIGH)
+    {
+      digitalWrite(7,HIGH);
+      delay();
+      digitalWrite(6,LOW);
+    }
   }
-
+else
+{
+  lcd.clear();
+  lcd.setCursor(0,0);
+  ldc.println("APAGADO");
+  delay(1000);
+}
 }
 
 float fmap(float x, float in_min, float in_max, float out_min, float out_max)
